@@ -112,51 +112,6 @@ if ($repositoryFullName !== null) {
             <li><a href="?repository_full_name=<?= $repositoryFullName ?>&page=<?= $i ?>"><?= $i ?></a></li>
         <?php endfor; ?>
     </ul>
-
-    <ul>
-        <?php
-        $iPage = 1;
-
-        if ($repositoryPagesCount > 1):
-            ?>
-            <a class="page" href="#"><?= $iPage ?></a>
-            <?
-            if ($currentPage > 4):
-                ?>
-                <a>...</a>
-                <?
-            endif;
-            $iPage++;
-
-            do {
-                if ($iPage == $currentPage) {
-                    ?>
-                    <a class="page current_page" href="/"><?= $iPage ?></a>
-                    <?
-                } elseif (
-                    ($iPage >= ($currentPage - 2))
-                    && ($iPage <= ($currentPage + 2))
-                ) {
-                    ?>
-                    <a class="page" href="#"><?= $iPage ?></a>
-                    <?
-                }
-
-                $iPage++;
-            } while ($iPage <= $repositoryPagesCount);
-            ?>
-
-            <?
-            if ($currentPage < $repositoryPagesCount) {
-
-                if ($currentPage + 4 < $repositoryPagesCount) {
-                    ?><a>...</a><?
-                }
-
-                ?><a class="page" href="#"><?= $repositoryPagesCount ?></a><?
-            }
-        endif; ?>
-    </ul>
 </div>
 
 </body>
